@@ -1,0 +1,105 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f3f3f3;
+    font-size: 14px;
+    overflow-x: hidden;
+    color: #353c4e;
+    font-family:"sans-serif";
+}
+
+a{
+    text-decoration: none;
+}
+
+.login-card{
+    display: block;
+    position: relative;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+.login-card.auth-body{
+    width: 530px;
+    left: 30%;
+    right: 30%;
+}
+.authbox{
+    padding: 20px;
+    border-radius: 8px;
+    border-color: #353c4e;
+}
+.brand-logo{
+    font-family: "Grand Hotel",cursive;
+    font-size: 50px;
+    color: #272d3c;
+}
+.input-group{
+    width: 440px;
+    margin-bottom:10px;
+}
+.input-group input{
+    border-radius: 5px;
+}
+
+.signupbtn{
+    width: 450px;
+    border-radius: 7px;
+    padding: 8px 8px 8px 8px;
+}
+
+.header{
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    border-bottom: 1px solid rgba(65, 60, 60, 0.295);
+}
+
+.header_container{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    margin: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.icon_1{
+margin-left: 15px;
+}
+
+.icon_11{
+    width: 35px;
+    height: 25px;
+    margin-left: 15px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.brand-logo-header{
+    font-family: "Grand Hotel",cursive;
+    font-size: 40px;
+    color: #272d3c;
+    padding: 15px;
+}
+.logoutbtn{
+    border: none;
+    background-color: #fff;
+    font-size: 16px;
+}
+.search{
+    padding: 5px;
+    width: 480px;
+    border-radius: 5px;
+    border: 1px solid rgba(65,60,60,0.295);
+}
