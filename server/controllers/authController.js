@@ -47,7 +47,7 @@ exports.login = async(req,res)=>{
         //match password with hashed password
         const isMatch = await bcrypt.compare(password,user.password)
         if(!isMatch)return res.status(400).json({msg:"Password is Incorrect"})
-        const acces_token = createAccessToken({id:user._id})
+        const access_token = createAccessToken({id:user._id})
         const refresh_token = createRefreshToken({id:user._id})
 
         //add cookie
@@ -59,7 +59,7 @@ exports.login = async(req,res)=>{
 
         res.json({
             msg:'Login Success',
-            acces_token,
+            access_token,
             user:{
                 ...user._doc,
                 password:''
@@ -103,7 +103,6 @@ try {
 }
 
 exports.resetPassword = (req,res)=>{
-
     let smtpTransport = nodemailer.createTransport({
         host:'smtp.gmail.com',
         service:'Gmail',
@@ -147,7 +146,6 @@ exports.resetPassword = (req,res)=>{
 }
 
 exports.newPassword = (req,res)=>{
-
     const newPassword = req.body.password
     const sentToken = req.body.token
     User.findOne({resetToken:sentToken, expireToken:{$gt:Date.now()}})

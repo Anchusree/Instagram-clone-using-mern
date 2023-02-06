@@ -6,6 +6,7 @@ import Register from './Components/Register/Register';
 import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
 import Mainlayout from './Components/Mainlayout/Mainlayout';
 import Home from './Components/Home/Home';
+import ResetPassword from './Components/ResetPassword/ResetPassword';
 
 
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Login/>}/>
         <Route exact path="/register" element={<Register/>}/>
         <Route path="/forgotpassword" element={<ForgotPassword/>}/>
+        <Route path="/reset/:token" element={<ResetPassword/>}/>
 
         <Route element={<Mainlayout/>}>
         <Route exact path="/home" element={<Home/>}/>
