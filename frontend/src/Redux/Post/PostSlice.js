@@ -1,0 +1,130 @@
+import { createSlice } from "@reduxjs/toolkit"
+import { createPost, getPosts, likePost, savePost, unLikePost, unSavePost } from "./PostAction";
+import { EditData } from "./PostFunction";
+
+
+
+const initialState = {
+    posts:[],
+    isError:false,
+    isLoading:false,
+    isPostSuccess:true,
+    message:""
+}
+export const postSlice = createSlice({
+    name:"post",
+    initialState:initialState,
+    reducers:{},
+    extraReducers:(builder)=>{
+        builder
+        .addCase(createPost.pending,(state)=>{
+            state.isLoading=true
+        })
+        .addCase(createPost.fulfilled,(state,action)=>{
+            state.isLoading = false;
+            state.isError=false;
+            state.isPostSuccess=true;
+            state.posts = action.payload.result
+            state.message= action.payload.msg
+       })
+        .addCase(createPost.rejected,(state,action)=>{
+            console.log("err", action);
+            state.isLoading=false;
+            state.isError=true;
+            state.isPostSuccess=false;
+            state.message='error'
+        })
+        //getposts
+        .addCase(getPosts.pending,(state)=>{
+            state.isLoading=true
+        })
+        .addCase(getPosts.fulfilled,(state,action)=>{
+            state.isLoading = false;
+            state.isError=false;
+            state.isPostSuccess=true;
+            state.posts = action.payload.posts
+            state.message= "Success"
+       })
+        .addCase(getPosts.rejected,(state,action)=>{
+            console.log("err", action);
+            state.isLoading=false;
+            state.isError=true;
+            state.isPostSuccess=false;
+            state.message='error'
+        })
+        //likepost
+        .addCase(likePost.pending,(state)=>{
+            state.isLoading=true
+        })
+        .addCase(likePost.fulfilled,(state,action)=>{
+            state.isLoading = false;
+            state.isError=false;
+            state.isPostSuccess=true;
+            state.posts = EditData(state.posts,action.payload.data._id,action.payload.data)
+            state.message= "Success"
+       })
+        .addCase(likePost.rejected,(state,action)=>{
+            console.log("err", action);
+            state.isLoading=false;
+            state.isError=true;
+            state.isPostSuccess=false;
+            state.message='error'
+        })
+        //unlikepost
+        .addCase(unLikePost.pending,(state)=>{
+            state.isLoading=true
+        })
+        .addCase(unLikePost.fulfilled,(state,action)=>{
+            state.isLoading = false;
+            state.isError=false;
+            state.isPostSuccess=true;
+            state.posts = EditData(state.posts,action.payload.data._id,action.payload.data)
+            state.message= "Success"
+       })
+        .addCase(unLikePost.rejected,(state,action)=>{
+            console.log("err", action);
+            state.isLoading=false;
+            state.isError=true;
+            state.isPostSuccess=false;
+            state.message='error'
+        })
+        //savepost
+        .addCase(savePost.pending,(state)=>{
+            state.isLoading=true
+        })
+        .addCase(savePost.fulfilled,(state,action)=>{
+            state.isLoading = false;
+            state.isError=false;
+            state.isPostSuccess=true;
+            state.posts = EditData(state.posts,action.payload.data._id,action.payload.data)
+            state.message= "Success"
+       })
+        .addCase(savePost.rejected,(state,action)=>{
+            console.log("err", action);
+            state.isLoading=false;
+            state.isError=true;
+            state.isPostSuccess=false;
+            state.message='error'
+        })
+        //unsavedpost
+        .addCase(unSavePost.pending,(state)=>{
+            state.isLoading=true
+        })
+        .addCase(unSavePost.fulfilled,(state,action)=>{
+            state.isLoading = false;
+            state.isError=false;
+            state.isPostSuccess=true;
+            state.posts = EditData(state.posts,action.payload.data._id,action.payload.data)
+            state.message= "Success"
+       })
+        .addCase(unSavePost.rejected,(state,action)=>{
+            console.log("err", action);
+            state.isLoading=false;
+            state.isError=true;
+            state.isPostSuccess=false;
+            state.message='error'
+        })
+    }
+})
+
+export default postSlice.reducer

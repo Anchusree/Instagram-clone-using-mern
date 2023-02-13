@@ -5,6 +5,7 @@ const cors = require('cors')
 const env = require('dotenv')
 const mongoose = require('mongoose')
 const authRouter = require('./routes/auth/auth')//import authrouter
+const postRouter = require('./routes/posts/posts')//import postrouter
 mongoose.set('strictQuery', false)
 
 env.config()
@@ -13,7 +14,7 @@ app.use(cors())
 app.use(express.json())
 //call the routes here
 app.use('/api',authRouter)
-
+app.use('/api',postRouter)
 
 app.listen(port,()=>{
 console.log(`Server running on ${port}`);

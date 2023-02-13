@@ -7,6 +7,7 @@ import ForgotPassword from './Components/ForgotPassword/ForgotPassword';
 import Mainlayout from './Components/Mainlayout/Mainlayout';
 import Home from './Components/Home/Home';
 import ResetPassword from './Components/ResetPassword/ResetPassword';
+import CreatePost from './Components/CreatePost/CreatePost';
 
 
 
@@ -21,6 +22,7 @@ function App() {
 
         <Route element={<Mainlayout/>}>
         <Route exact path="/home" element={<Home/>}/>
+        <Route exact path="/createPosts" element={<CreatePost/>}/>
         </Route>
 
         
