@@ -8,11 +8,12 @@ Features include:
 - Testing API using Postman
 - JWT based authentication
 - Reset/Refresh tokens
-- Upload imahge to cloudinary
+- Upload image to cloudinary
 - Sending Emails using nodemailer
 - Forgot & Reset Password
 - React Router hooks
 - Redux Toolkit State management
+- Manage Apis
 - Protected/Private Routes
 - CRUD Operations
 
