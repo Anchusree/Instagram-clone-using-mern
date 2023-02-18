@@ -1,9 +1,9 @@
 # Instagram-clone-using-mern
 Instagram clone using Mern - Node, React, Express and Mongodb 
 
-Watch Mern Stack series on Youtube: https://tinyurl.com/yckx9szy
+# Watch Mern Stack series on Youtube: https://tinyurl.com/yckx9szy
 
-Features include: 
+# Features 
 - Building an backend API with Node.js & Express
 - Testing API using Postman
 - JWT based authentication
