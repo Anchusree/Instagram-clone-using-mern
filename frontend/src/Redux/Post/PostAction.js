@@ -54,3 +54,21 @@ async(post,thunkAPI)=>{
         return thunkAPI.rejectWithValue(error)
     }
 })
+//createComment
+export const createComment = createAsyncThunk("post/createComment",
+async(comment,thunkAPI)=>{
+    try {
+        return PostService.createComment(comment)
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error)
+    }
+})
+//deleteComment
+export const deleteComment = createAsyncThunk("post/deleteComment",
+async(comment,thunkAPI)=>{
+    try {
+        return PostService.deleteComment(comment)
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error)
+    }
+})

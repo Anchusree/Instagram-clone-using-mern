@@ -1,5 +1,6 @@
 const express = require('express')
-const { createPost, getAllPosts, likePost, unlikePost, savePost, unSavePost } = require('../../controllers/postController')
+const { createPost, getAllPosts, likePost, unlikePost, savePost, 
+    unSavePost, addComment, getAllComments, deleteComment } = require('../../controllers/postController')
 const requireLogin = require('../../middleware/requireLogin')
 const postRouter = express.Router()
 
@@ -12,5 +13,11 @@ postRouter.put('/unlike',requireLogin,unlikePost)
 
 postRouter.put('/saved',requireLogin, savePost)
 postRouter.put('/unsaved',requireLogin, unSavePost)
+
+//comments route
+
+postRouter.put('/createComment',requireLogin,addComment)
+postRouter.get('/allcomments',requireLogin,getAllComments)
+postRouter.put('/deleteComment',requireLogin,deleteComment)
 
 module.exports = postRouter

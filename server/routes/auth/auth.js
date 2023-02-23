@@ -9,7 +9,7 @@ authRouter.post('/reset-passsword',resetPassword)
 authRouter.post('/new-password',newPassword)
 
 authRouter.post('/refresh_token',refreshToken)
-authRouter.get('/logout',(req,res)=>{})
+
 
 
 

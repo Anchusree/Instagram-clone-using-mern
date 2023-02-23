@@ -50,11 +50,30 @@ const unSavePost = async(post)=>{
     return response
 }
 
+const createComment = async(comment)=>{
+    const response = await axios.put(`${baseUrl}/createComment`,{text:comment.text, postId:comment.postId},config)
+    //console.log(response);
+    return response
+}
+//deleteComment
+const deleteComment=async(comment)=>{
+    const response = await axios.put(`${baseUrl}/deleteComment`,{
+        commentText:comment.record.text, 
+        postId:comment.postId,
+        commentPostedBy:comment.record.postedBy._id,
+        commentId:comment.record._id
+    },config)
+    //console.log(response);
+    return response
+}
+
 export const PostService = {
     createPost,
     getPosts,
     likePost,
     unLikePost,
     savePost,
-    unSavePost
+    unSavePost,
+    createComment,
+    deleteComment
 }

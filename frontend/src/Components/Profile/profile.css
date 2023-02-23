@@ -1,0 +1,37 @@
+.profileTabBtns{
+    gap: 30px;
+}
+
+.profileTabBtns button{
+    border: none;
+}
+.profileTabBtns button:hover{
+    color: grey;
+}
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    flex-direction: row;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    position: relative;
+}
+.item{
+    width: 180px;
+    display: block;
+    height: 160px;
+    position: relative;
+}
+.EditModal{
+    position: absolute;
+    inset: 1;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    top: 20%;
+    left: 35%;
+}

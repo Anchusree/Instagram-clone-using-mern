@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { createPost, getPosts, likePost, savePost, unLikePost, unSavePost } from "./PostAction";
+import { createComment, createPost, deleteComment, getPosts, likePost, savePost, unLikePost, unSavePost } from "./PostAction";
 import { EditData } from "./PostFunction";
 
 
@@ -118,6 +118,44 @@ export const postSlice = createSlice({
             state.message= "Success"
        })
         .addCase(unSavePost.rejected,(state,action)=>{
+            console.log("err", action);
+            state.isLoading=false;
+            state.isError=true;
+            state.isPostSuccess=false;
+            state.message='error'
+        })
+        //createComment
+        .addCase(createComment.pending,(state)=>{
+            state.isLoading=true
+        })
+        .addCase(createComment.fulfilled,(state,action)=>{
+            console.log(action);
+            state.isLoading = false;
+            state.isError=false;
+            state.isPostSuccess=true;
+            state.posts = EditData(state.posts,action.payload.data._id,action.payload.data)
+            state.message= "Success"
+       })
+        .addCase(createComment.rejected,(state,action)=>{
+            console.log("err", action);
+            state.isLoading=false;
+            state.isError=true;
+            state.isPostSuccess=false;
+            state.message='error'
+        })
+        //deleteComment
+        .addCase(deleteComment.pending,(state)=>{
+            state.isLoading=true
+        })
+        .addCase(deleteComment.fulfilled,(state,action)=>{
+            console.log(action);
+            state.isLoading = false;
+            state.isError=false;
+            state.isPostSuccess=true;
+            state.posts = EditData(state.posts,action.payload.data._id,action.payload.data)
+            state.message= "Success"
+       })
+        .addCase(deleteComment.rejected,(state,action)=>{
             console.log("err", action);
             state.isLoading=false;
             state.isError=true;

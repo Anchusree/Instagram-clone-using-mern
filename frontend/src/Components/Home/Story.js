@@ -44,10 +44,10 @@ export default function Story() {
             </button>
         </div>
 
-        <div className="story_l">
-        <button className='storybtn'>
+        <div className="story_l" style={{marginTop:"-15px", padding:'10px'}}>
+        <button className='storybtn' >
             <i className='fa fa-plus-circle story_image'></i>
-            <i className='story_S'>Add Story</i>    
+            <i className='story_S' style={{display:"flex"}}>Add Story</i>    
         </button>
         </div>
       </div>
