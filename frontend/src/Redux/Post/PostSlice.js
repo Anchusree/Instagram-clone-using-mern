@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { createComment, createPost, deleteComment, getPosts, likePost, savePost, unLikePost, unSavePost } from "./PostAction";
-import { EditData } from "./PostFunction";
+import { createComment, createPost, deleteComment, deletePost, getPosts, likePost, savePost, unLikePost, unSavePost } from "./PostAction";
+import { DeleteData, EditData } from "./PostFunction";
 
 
 
@@ -162,6 +162,27 @@ export const postSlice = createSlice({
             state.isPostSuccess=false;
             state.message='error'
         })
+
+        //deletepost
+        .addCase(deletePost.pending,(state)=>{
+            state.isLoading=true
+        })
+        .addCase(deletePost.fulfilled,(state,action)=>{
+            console.log(action);
+            state.isLoading = false;
+            state.isError=false;
+            state.isPostSuccess=true;
+            state.posts = DeleteData(state.posts,action.payload.data.result._id)
+            state.message= "Success"
+       })
+        .addCase(deletePost.rejected,(state,action)=>{
+            console.log("err", action);
+            state.isLoading=false;
+            state.isError=true;
+            state.isPostSuccess=false;
+            state.message='error'
+        })
+
     }
 })
 

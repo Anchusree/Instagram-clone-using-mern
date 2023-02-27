@@ -29,20 +29,20 @@ export default function Login() {
             password:""
         },
         validationSchema:schema,
-        onSubmit:(values)=>{
-            dispatch(login(values))
+        onSubmit:async (values)=>{
+            await dispatch(login(values))
+           
         }
     })
 
     useEffect(()=>{
-        if(isLoginSuccess){
+        if(user && isLoginSuccess){
             navigate("/home")
-            // toast.success(message)
         }
         else{
             navigate("/")
         }
-    },[navigate,isError,isLoading])
+    },[isLoginSuccess])
 
   return (
     <div className="container">

@@ -5,7 +5,7 @@ import image3 from '../../assets/icon/share.svg'
 import image4 from '../../assets/icon/emoji.svg'
 import { timeSince } from '../../Utils/Utils'
 import { useDispatch } from 'react-redux'
-import { createComment, deleteComment, likePost, savePost, unLikePost, unSavePost } from '../../Redux/Post/PostAction'
+import { createComment, deleteComment, deletePost, likePost, savePost, unLikePost, unSavePost } from '../../Redux/Post/PostAction'
 import { Link } from 'react-router-dom'
 
 export default function Posts({ post, currentUser }) {
@@ -40,7 +40,17 @@ export default function Posts({ post, currentUser }) {
               <p className='p_name'>{post.postedBy.name}</p>
             </Link>
           </div>
-          <i className='fas fa-ellipsis-h threedots'></i>
+          {
+            post.postedBy._id === currentUser._id
+            ?
+            <i className='fas fa-trash' style={{float:'right', paddingTop:'16px', fontSize:'16px',paddingRight:'16px'}}
+            onClick={()=>dispatch(deletePost(post._id))}
+            ></i>
+            :
+            <i className='fas fa-ellipsis-h threedots'></i>
+
+          }
+         
         </div>
         <div className='p_image'>
           <img className='pp_full' src={post.photo} alt="post" />
@@ -85,8 +95,7 @@ export default function Posts({ post, currentUser }) {
             </button>
 
             }
-           
-
+          
           </div>
         </div>
 

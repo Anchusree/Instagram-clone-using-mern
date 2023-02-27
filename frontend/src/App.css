@@ -367,5 +367,8 @@ font-weight: bold;
     background-color: #e8e4e8;
     border-radius: 12px;
 }
+i{
+cursor: pointer;
+}
 
 

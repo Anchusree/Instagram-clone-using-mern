@@ -67,6 +67,13 @@ const deleteComment=async(comment)=>{
     return response
 }
 
+//deletepost
+const deletePost = async(postId)=>{
+    const response = await axios.delete(`${baseUrl}/deletepost/${postId}`,config)
+    console.log(response);
+    return response
+}
+
 export const PostService = {
     createPost,
     getPosts,
@@ -75,5 +82,6 @@ export const PostService = {
     savePost,
     unSavePost,
     createComment,
-    deleteComment
+    deleteComment,
+    deletePost
 }

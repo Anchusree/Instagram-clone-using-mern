@@ -72,3 +72,13 @@ async(comment,thunkAPI)=>{
         return thunkAPI.rejectWithValue(error)
     }
 })
+
+//deletePost
+export const deletePost = createAsyncThunk("post/deletePost",
+async(postId,thunkAPI)=>{
+    try {
+        return PostService.deletePost(postId)
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error)
+    }
+})

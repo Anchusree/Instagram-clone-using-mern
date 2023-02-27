@@ -35,7 +35,9 @@ export default function Header() {
 
             <button className='logoutbtn' type='submit'
             onClick={()=>{
-              dispatch(logout()); navigate("/")
+              dispatch(logout()); 
+              navigate("/"); 
+              window.location.reload(true)
             }}
             >Logout</button>
         </div>

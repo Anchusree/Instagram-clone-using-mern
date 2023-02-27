@@ -179,3 +179,21 @@ exports.deleteComment=async(req,res)=>{
     })
 
 }
+
+exports.deletePost = async(req,res)=>{
+    await Post.findByIdAndUpdate({_id:req.params.postId})
+    .populate("postedBy","_id")
+    .exec((err,post)=>{
+        if(err) return res.status(400).json({msg:err})
+
+        if(post.postedBy._id.toString() === req.user._id.toString()){
+            post.remove()
+            .then(result=>{
+                res.json({msg:'Deleted post', result})
+            })
+            .catch(err=>{
+                return res.status(500).json({msg:err.message})
+            })
+        }
+    })
+}

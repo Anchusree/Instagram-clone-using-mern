@@ -11,23 +11,24 @@ import CreatePost from './Components/CreatePost/CreatePost';
 import PrivateRoute from './Utils/PrivateRoute';
 import Profile from './Components/Profile/Profile';
 import UserProfile from './Components/Profile/UserProfile';
+import { getTokenfromLocalStorage } from './Utils/Utils';
 
 
 
 function App() {
 
   //check if user is logined
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    if(localStorage.getItem("token") !== "" && localStorage.getItem("user") !== ""){
-      <Navigate to="/home"/>
-    }
-    else{
-      <Navigate to="/"/>
-    }
+  //   if(localStorage.getItem("token") && localStorage.getItem("user")){
+  //     <Navigate to="/home"/>
+  //   }
+  //   else{
+  //     <Navigate to="/"/>
+  //   }
 
-    return ()=>{}
-  },[]) 
+  //   //return ()=>{}
+  // },[getTokenfromLocalStorage]) 
 
 
   
@@ -41,7 +42,7 @@ function App() {
 
       <Route element={<PrivateRoute/>}>
        <Route element={<Mainlayout/>}>
-        <Route path="/home" element={<Home/>}/>
+        <Route exact path="/home" element={<Home/>}/>
         <Route path="/createPosts" element={<CreatePost/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route  path='/profile/:userid'  element={<UserProfile/>}/>
