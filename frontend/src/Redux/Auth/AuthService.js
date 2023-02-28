@@ -13,6 +13,7 @@ const login =async(user)=>{
     if(response.data){
         await localStorage.setItem("token",JSON.stringify(response.data.access_token))
         await localStorage.setItem("user",JSON.stringify(response.data.user))
+        
     }
     return response.data
 }

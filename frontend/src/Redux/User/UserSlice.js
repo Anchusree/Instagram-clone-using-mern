@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getfollowUser, getunfollowUser, getUserDetails, logout } from "./UserAction";
+import { getfollowUser, getSuggestions, getunfollowUser, getUserDetails, logout } from "./UserAction";
 
 
 
@@ -7,9 +7,11 @@ const initialState = {
     user:[],
     isError:false,
     isLoading:false,
-    isSuccess:true,
+    isSuccess:false,
     message:"",
-    userProfile:[]
+    userProfile:[],
+    userSuggestion:[],
+    isSuggestionSuccess:false
 }
 export const userSlice = createSlice({
     name:"user",
@@ -89,6 +91,26 @@ export const userSlice = createSlice({
             state.isLoading=false;
             state.isError=true;
             state.isSuccess=false;
+            state.message='error'
+        })
+
+
+         //suggestion user
+         .addCase(getSuggestions.pending,(state)=>{
+            state.isLoading=true
+        })
+        .addCase(getSuggestions.fulfilled,(state,action)=>{
+            console.log("actn",action);
+            state.isLoading = false;
+            state.isError=false;
+            state.isSuggestionSuccess=true;
+            state.userSuggestion = action.payload.users;
+            state.message= "Success"
+       })
+        .addCase(getSuggestions.rejected,(state,action)=>{
+            state.isLoading=false;
+            state.isError=true;
+            state.isSuggestionSuccess=false;
             state.message='error'
         })
        

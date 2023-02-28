@@ -34,10 +34,10 @@ export default function Header() {
             <Link to="/profile"><img className='icon_11' src={image3}  alt=""/></Link>
 
             <button className='logoutbtn' type='submit'
-            onClick={()=>{
-              dispatch(logout()); 
-              navigate("/"); 
-              window.location.reload(true)
+            onClick={async()=>{
+              await dispatch(logout()); 
+              await navigate("/"); 
+              await window.location.reload(true)
             }}
             >Logout</button>
         </div>

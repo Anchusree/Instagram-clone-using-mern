@@ -39,3 +39,12 @@ async(userId,thunkAPI)=>{
         return thunkAPI.rejectWithValue(error)
     }
 })
+//getsuggestionusers
+export const getSuggestions = createAsyncThunk("user/getSuggestions",
+async(thunkAPI)=>{
+    try {
+        return UserService.getSuggestions()
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error)
+    }
+})

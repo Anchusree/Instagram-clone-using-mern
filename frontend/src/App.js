@@ -18,24 +18,23 @@ import { getTokenfromLocalStorage } from './Utils/Utils';
 function App() {
 
   //check if user is logined
-  // useEffect(()=>{
+  useEffect(()=>{
 
-  //   if(localStorage.getItem("token") && localStorage.getItem("user")){
-  //     <Navigate to="/home"/>
-  //   }
-  //   else{
-  //     <Navigate to="/"/>
-  //   }
+    if(localStorage.getItem("token") && localStorage.getItem("user")){
+      <Navigate to="/home"/>
+    }
+    else{
+      <Navigate to="/"/>
+    }
 
-  //   //return ()=>{}
-  // },[getTokenfromLocalStorage]) 
+  },[getTokenfromLocalStorage]) 
 
 
   
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login/>}/>
+        <Route exact path="/" element={<Login/>}/>
         <Route exact path="/register" element={<Register/>}/>
         <Route path="/forgotpassword" element={<ForgotPassword/>}/>
         <Route path="/reset/:token" element={<ResetPassword/>}/>

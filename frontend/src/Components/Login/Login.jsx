@@ -21,7 +21,7 @@ export default function Login() {
 
     const authState = useSelector(state=>state.auth)
 
-    const {user,isError,isLoading,isLoginSuccess,message} = authState
+    const {user,isError,isLoading,isLoginSuccess} = authState
 
     const formik = useFormik({
         initialValues:{
@@ -30,19 +30,19 @@ export default function Login() {
         },
         validationSchema:schema,
         onSubmit:async (values)=>{
-            await dispatch(login(values))
-           
+            await dispatch(login(values)) 
+            window.location.reload(true)
         }
     })
+    useEffect(() => {
+        if (isLoginSuccess) {
+            navigate("/home");
+        }
+        else {
+            navigate("/");
+        }
+    }, [isLoginSuccess]);
 
-    useEffect(()=>{
-        if(user && isLoginSuccess){
-            navigate("/home")
-        }
-        else{
-            navigate("/")
-        }
-    },[isLoginSuccess])
 
   return (
     <div className="container">

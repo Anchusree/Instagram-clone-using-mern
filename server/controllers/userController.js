@@ -105,8 +105,8 @@ exports.unfollowUser = async (req, res) => {
             res.json(result)
         })
     }
-
 }
+
 exports.getUserDetails = async (req, res) => {
     try {
         await User.findOne({ _id: req.params.id })
@@ -126,5 +126,29 @@ exports.getUserDetails = async (req, res) => {
 
     } catch (error) {
         return res.status(500).json({ msg: error.message })
+    }
+}
+
+exports.suggestionUser = async(req,res)=>{
+    try {
+        const newArr = [...req.user.following, req.user._id]
+
+        const num  = req.query.num || 10
+
+        const users = await User.aggregate([
+            { $match: { _id: { $nin: newArr } } },
+            { $sample: { size: Number(num) } },
+            { $lookup: { from: 'users', localField: 'followers', foreignField: '_id', as: 'followers' } },
+            { $lookup: { from: 'users', localField: 'following', foreignField: '_id', as: 'following' } },
+        ])
+        .project("-password")
+
+        return res.json({
+            users,
+            result: users.length
+        })
+
+    } catch (err) {
+        return res.status(500).json({msg: err.message})
     }
 }

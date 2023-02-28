@@ -36,10 +36,18 @@ const getUnFollowUser = async(userId)=>{
     const updateuser = getUserDetails(userId)
     return updateuser
 }
+
+//getsuggestions
+const getSuggestions = async()=>{
+    const response = await axios.get(`${baseUrl}/suggestionUser`,config)
+    // console.log(response);
+    return response.data
+}
 export const UserService = {
     logout,
     getUserDetails,
     getFollowUser,
-    getUnFollowUser
+    getUnFollowUser,
+    getSuggestions
    
 }
