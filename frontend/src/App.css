@@ -371,4 +371,74 @@ i{
 cursor: pointer;
 }
 
+.postedImg{
+    object-fit: fill;
+    width: 440px;
+    height: 400px;
+}
+.text{
+    margin-top: -218px;
+    padding-left: 155px;
+    color: #666666;
+    position: absolute;
+    transition: all 200ms ease-out;
+    opacity: 0;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+.text:hover{
+    cursor: pointer;
+    opacity: 0.9;
+    transition: all 400ms ease-out;
+}
 
+.titlespan{
+    color: white;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.postedImg{
+    width: 350px;
+    height: 350px;
+}
+
+.showPostModal{
+    position: absolute;
+    inset: 40px;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    /* top: 20%; */
+    left: 20%;
+}
+.modalpostedimg{
+    object-fit: unset;
+    width: 277px;
+    height: 490px;
+}
+
+.post-modal{
+    width: 535px;
+    height: auto;
+    border: 0.5px solid rgba(0, 0, 0, 0.281);
+    background-color: white;
+    margin-bottom: 30px;
+}
+.p_image_modal{
+    height: 241px;
+    margin-top: 12px;
+    background-color: white;
+}
+.p_d_modal{
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
+}

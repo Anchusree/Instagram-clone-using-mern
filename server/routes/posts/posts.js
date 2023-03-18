@@ -1,6 +1,6 @@
 const express = require('express')
 const { createPost, getAllPosts, likePost, unlikePost, savePost, 
-    unSavePost, addComment, getAllComments, deleteComment, deletePost } = require('../../controllers/postController')
+    unSavePost, addComment, getAllComments, deleteComment, deletePost, explore } = require('../../controllers/postController')
 const requireLogin = require('../../middleware/requireLogin')
 const postRouter = express.Router()
 
@@ -22,5 +22,7 @@ postRouter.put('/deleteComment',requireLogin,deleteComment)
 
 //delete post
 postRouter.delete("/deletepost/:postId",requireLogin,deletePost)
+
+postRouter.get('/explore',requireLogin,explore)
 
 module.exports = postRouter

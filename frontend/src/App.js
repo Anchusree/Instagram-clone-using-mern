@@ -12,6 +12,7 @@ import PrivateRoute from './Utils/PrivateRoute';
 import Profile from './Components/Profile/Profile';
 import UserProfile from './Components/Profile/UserProfile';
 import { getTokenfromLocalStorage } from './Utils/Utils';
+import Explore from './Components/Explore/Explore';
 
 
 
@@ -45,6 +46,7 @@ function App() {
         <Route path="/createPosts" element={<CreatePost/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route  path='/profile/:userid'  element={<UserProfile/>}/>
+        <Route path='/explore' element={<Explore/>}/>
         </Route>
       </Route>
         

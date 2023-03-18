@@ -197,3 +197,16 @@ exports.deletePost = async(req,res)=>{
         }
     })
 }
+
+exports.explore = async(req,res)=>{
+    try {
+        let explore = await Post.find({})
+        .populate("postedBy", "_id name pic")
+        .populate("comments.postedBy", "_id name pic")
+    
+        res.json(explore)
+        
+    } catch (error) {
+        return res.status(422).json({ msg: "Something went wrong." })
+    }
+}
