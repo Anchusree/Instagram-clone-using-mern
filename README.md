@@ -16,4 +16,5 @@ Watch Mern Stack series on Youtube: https://tinyurl.com/yckx9szy
 - Manage Apis
 - Protected/Private Routes
 - CRUD Operations
+- Search Users
 
