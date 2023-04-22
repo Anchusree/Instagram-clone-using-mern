@@ -152,3 +152,16 @@ exports.suggestionUser = async(req,res)=>{
         return res.status(500).json({msg: err.message})
     }
 }
+
+exports.searchUser=(req,res)=>{
+    let userPattern = new RegExp("^"+req.body.query)
+
+    User.find({name:{$regex:userPattern}})
+    .select("_id name email pic")
+    .then(user=>{
+        res.json({user})
+    })
+    .catch(err=>{
+        return res.status(500).json({msg:err.message})
+    })
+}

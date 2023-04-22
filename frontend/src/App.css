@@ -442,3 +442,21 @@ cursor: pointer;
     border-bottom: 1px solid lightgray;
     padding-bottom: 10px;
 }
+
+.collection{
+    width: 400px;
+    height: auto;
+    background-color: white;
+    border: 1px solid #d9d5c8;
+    padding: 5px;
+}
+.collection a{
+    color: black;
+    font-weight: 600;
+}
+.collection-item:hover{
+background-color: #d3d3d340
+}
+ul{
+    list-style: none;
+}

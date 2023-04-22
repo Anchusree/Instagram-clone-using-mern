@@ -43,11 +43,23 @@ const getSuggestions = async()=>{
     // console.log(response);
     return response.data
 }
+
+//searchUser
+const searchUser = async(query)=>{
+    const response = await axios.post(`${baseUrl}/search-user`,{query},config)
+    // console.log(response);
+    return response.data
+}
+
+
+
+
 export const UserService = {
     logout,
     getUserDetails,
     getFollowUser,
     getUnFollowUser,
-    getSuggestions
+    getSuggestions,
+    searchUser
    
 }

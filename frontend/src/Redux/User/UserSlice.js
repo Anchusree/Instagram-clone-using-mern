@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { getfollowUser, getSuggestions, getunfollowUser, getUserDetails, logout } from "./UserAction";
+import { getfollowUser, getSuggestions, getunfollowUser, getUserDetails, logout, searchUser } from "./UserAction";
 
 
 
@@ -11,7 +11,9 @@ const initialState = {
     message:"",
     userProfile:[],
     userSuggestion:[],
-    isSuggestionSuccess:false
+    isSearchSuccess: "",
+    isSuggestionSuccess:false,
+    userSearch: [],
 }
 export const userSlice = createSlice({
     name:"user",
@@ -113,6 +115,26 @@ export const userSlice = createSlice({
             state.isSuggestionSuccess=false;
             state.message='error'
         })
+
+        //search user
+        .addCase(searchUser.pending,(state)=>{
+            state.isLoading=true
+        })
+        .addCase(searchUser.fulfilled,(state,action)=>{
+            console.log("actn",action);
+            state.isLoading = false;
+            state.isError=false;
+            state.isSearchSuccess=true;
+            state.userSearch = action.payload.user;
+            state.message= "Success"
+       })
+        .addCase(searchUser.rejected,(state,action)=>{
+            state.isLoading=false;
+            state.isError=true;
+            state.isSearchSuccess=false;
+            state.message='error'
+        })
+
        
     }
 })

@@ -48,3 +48,12 @@ async(thunkAPI)=>{
         return thunkAPI.rejectWithValue(error)
     }
 })
+//searchUser
+export const searchUser = createAsyncThunk("user/searchUser",
+async(query,thunkAPI)=>{
+    try {
+        return UserService.searchUser(query)
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error)
+    }
+})
