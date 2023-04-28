@@ -165,3 +165,35 @@ exports.searchUser=(req,res)=>{
         return res.status(500).json({msg:err.message})
     })
 }
+
+exports.addStory = async(req,res)=>{
+
+    User.findByIdAndUpdate(req.user._id,{
+        $push:{
+            stories:{
+                user:req.user._id,
+                storyPic:req.body.pic,
+                storyDate:new Date()
+            }
+        }
+    },{new:true},
+    (err,result)=>{
+        if(err){
+            return res.status(422).json({msg:err.message})
+        }
+        res.status(200).json(result)
+    }
+    )
+}
+
+exports.getStory =(req,res)=>{
+
+    User.find({"stories.storyDate":{"$lte": new Date(Date.now() +1*24*60*60*1000)}})//less than 24 hours
+    .select("_id name pic stories")
+    .then(userStories=>{
+        res.status(200).json({userStories:userStories})
+    })
+    .catch(err=>{
+        res.status(400).json({err:err.message})
+    })
+}

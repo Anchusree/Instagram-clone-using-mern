@@ -460,3 +460,16 @@ background-color: #d3d3d340
 ul{
     list-style: none;
 }
+
+.storymodal{
+    position: absolute;
+    inset: 1;
+    border: 1px solid rgb(204, 204, 204);
+    background: rgb(255, 255, 255);
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    top: 10%;
+    left: 35%;
+}

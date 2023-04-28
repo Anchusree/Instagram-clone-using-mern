@@ -1,5 +1,5 @@
 const express = require('express')
-const { logout, getMyPosts, getMySavedPosts, updateProfile, followUser, unfollowUser, getUserDetails, suggestionUser, searchUser } = require('../../controllers/userController')
+const { logout, getMyPosts, getMySavedPosts, updateProfile, followUser, unfollowUser, getUserDetails, suggestionUser, searchUser, addStory, getStory } = require('../../controllers/userController')
 const userRouter = express.Router()
 const requireLogin = require('../../middleware/requireLogin')
 
@@ -16,6 +16,11 @@ userRouter.get('/suggestionUser',requireLogin,suggestionUser)
 
 //manage user search
 userRouter.post('/search-user',requireLogin,searchUser)
+
+//creating stories
+userRouter.post('/addStory',requireLogin,addStory)
+//view story
+userRouter.get('/getStory',requireLogin,getStory)
 
 
 module.exports = userRouter
